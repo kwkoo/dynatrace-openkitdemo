@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  tempserver:
+    build:
+      context: ./server
+    container_name: "openkitserver"
+    image: "openkitdemo/server"
+    ports:
+      - 8080:8080
+
+  client:
+    build:
+      context: ./client
+    container_name: "openkitclient"
+    image: "openkitdemo/client"
+    command: ["${APPLICATION_ID}", "${BEACON_URL}", "${TEMP_SERVER}"]
+    depends_on:
+      - tempserver

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "Pausing to allow server to start..."
+sleep 5
+
+while true; do
+	java -cp /tempsensor.jar com.kwkoo.Temp "$@"
+	echo "Run finished at $(date) - sleeping..."
+	sleep 300
+done
